@@ -1,0 +1,96 @@
+/* Grid container for our header, description and canvas view */
+section {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 10fr 1fr;
+  grid-template-areas: 
+    "header header"
+    "description canvas"
+    "footer footer";
+}
+
+/* Grid elements */
+#header {
+  grid-area: header;
+  /* background-color: red; */
+  text-align: center;
+  font-size: 1vw;
+}
+
+/* Description View Related Styles */
+#description {
+  grid-area: description;
+  /* background-color: green; */
+  padding: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#description .buttons {
+  text-align: center;
+  margin: 0 auto;
+}
+
+#description .buttons a {
+  text-decoration: none;
+  color: white;
+  background: #F2385A;
+  padding: 16px 10vw;
+  border-radius: 10px;
+  font-size: 1vw;
+  box-shadow: 0px 14px 0px 0px #f02046, 0px 0px 20px 0px #bbb;
+  transition: all .2s;
+  position: relative;
+  top: 0px;
+}
+
+#description .buttons a:active {
+  top: 8px;
+  box-shadow: 0px 7px 0px 0px #f02046;
+}
+
+#canvas-view {
+  /* border: 2px solid orange; */
+  margin: auto;
+  grid-area: canvas;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: center; */
+  /* background-color: blue; */
+}
+
+#canvas-view .path  {
+  fill: none;
+  stroke-width: 15px;
+  stroke: black;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+#canvas-view .drawing {
+  width: 644px;
+  height: 644px;
+  border: 5px solid black;
+  border-radius: 10px;
+  box-shadow:0px 0px 20px 0px #bbb;
+  /* height: 100%; */
+}
+
+#footer {
+  grid-area: footer;
+  text-align: center;
+  /* background-color: orange; */
+}
+
+/* Pretty fonts for the description */
+.prettify {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05vw;
+  line-height: 1.35;
+}
