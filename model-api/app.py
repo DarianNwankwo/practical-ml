@@ -1,3 +1,4 @@
+import json
 import numpy as np
 from flask import Flask, jsonify, request
 from joblib import load
@@ -9,7 +10,10 @@ clf = load("./model/digit_recognition.joblib")
 
 @app.route("/model-api", methods=['POST'])
 def digit_inference():
-    data = request.json
+    data = request.get_data()
+    data = json.loads(data.decode("utf-8"))
+    # print(type(data))
+    # print(dir(request))
     pixels = np.asarray(data["pixels"]).reshape(1, 784)
     return jsonify({
         "result": int(clf.predict(pixels)[0])
