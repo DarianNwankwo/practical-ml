@@ -1,11 +1,19 @@
 import React from "react";
 
 
-function Description(props) {
-    const { id } = props;
+class Description extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
+  handleSubmit = () => {
+    this.props.handleSubmit();
+  }
+
+  render() {
     return (
-        <div id={id}>
+        <div id={this.props.id}>
             <p className="prettify">
                 This is a very simple application to simulate what real-world machine learning applications look like
                 in web applications. The frontend is built in React which then takes your drawing and trys to makes
@@ -23,10 +31,11 @@ function Description(props) {
             </p>
             <p className="prettify">My Best Guess: <span></span></p>
             <div className="buttons">
-                <a href="#">Can I Guess Now?</a>
+                <button onClick={this.handleSubmit}>Can I Guess Now?</button>
             </div>
         </div>
     );
+  }
 }
 
 

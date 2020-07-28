@@ -25,8 +25,8 @@ def add(x, y):
 
 @app.task
 def guess_digit(pixels):
-    pixels = np.ones((1, 784))
-    # payload = {"pixels": pixels}
-    # res = requests.post(MODEL_API, data=json.dumps(payload))
-    # return res.json()
-    return int( CLF.predict(pixels)[0] )
+    # pixels = np.ones((1, 784))
+    payload = {"pixels": pixels}
+    res = requests.post(MODEL_API, data=json.dumps(payload))
+    return res.json()
+    # return int( CLF.predict(pixels)[0] )

@@ -7,11 +7,13 @@ const express = require("express"),
       );
 
 const task = client.createTask("digit_inference.guess_digit");
+const task2 = client.createTask("digit_inference.add");
 const port = process.env.PORT || 3001;
 
 
 app.get("/", (req, res) => {
-  const result = task.applyAsync([1]);
+  const result = task2.applyAsync([10, 100]);
+  // const result = task.applyAsync([1]);
   result.get().then(data => {
     console.log(data);
   });

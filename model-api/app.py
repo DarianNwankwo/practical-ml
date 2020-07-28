@@ -1,11 +1,19 @@
 import json
 import numpy as np
+
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from joblib import load
 
 
 app = Flask(__name__)
+cors = CORS(app)
 clf = load("./model/digit_recognition.joblib")
+
+
+@app.route("/", methods=["GET"])
+def index():
+    return "Hello, World"
 
 
 @app.route("/model-api", methods=['POST'])
@@ -30,7 +38,7 @@ def parse_data(filename, offset):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=8080)
     # X_test, Y_test = parse_data("./data/test_images_ubyte", 16), parse_data("./data/test_labels_ubyte", 8)
     # X_test = np.reshape(X_test, (10000, 784))
     # Y_test = np.reshape(Y_test, (10000,))
